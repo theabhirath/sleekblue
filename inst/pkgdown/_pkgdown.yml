@@ -1,0 +1,56 @@
+# sleekblue -------------------------------------------------------------
+# Shared pkgdown template: a muted-blue theme with light and dark colour modes.
+# Consuming packages opt in with:
+#
+#   template:
+#     package: sleekblue
+#
+# Everything below is merged into the consuming package's config; the consumer
+# only adds its own `url`, `authors`, `reference`, `articles`, and `navbar`.
+# Any key the consumer sets locally overrides the value here.
+
+template:
+  bootstrap: 5
+  light-switch: true
+  math-rendering: katex
+
+  # Syntax highlighting: a calm light theme paired with a cool, blue-leaning
+  # dark theme so code blocks track the page's colour mode.
+  theme: arrow-light
+  theme-dark: nord
+
+  bslib:
+    # ---- Typography -------------------------------------------------------
+    base_font: { google: "Inter" }
+    heading_font: { google: "Outfit" }
+    code_font: { google: "JetBrains Mono" }
+
+    # ---- Core colours (light mode) ---------------------------------------
+    # `bg`/`fg` seed the full gray ramp; `primary` drives links and accents.
+    # The dark colour mode is defined in extra.scss via [data-bs-theme=dark].
+    bg: "#fbfcfe"
+    fg: "#1f2a37"
+    primary: "#3f6f9f"
+    secondary: "#5b6b7d"
+    success: "#3f8f73"
+    info: "#3f6f9f"
+    warning: "#c08a3e"
+    danger: "#b4564d"
+
+    # ---- Shape ------------------------------------------------------------
+    border-radius: "0.5rem"
+    border-color: "#e4e9f0"
+
+    # ---- Links ------------------------------------------------------------
+    link-decoration: "none"
+
+    # ---- Inline code (light mode) ----------------------------------------
+    code-color: "#345d86"
+    code-bg: "#eef2f8"
+
+    # ---- Navbar (separate light / dark backgrounds) ----------------------
+    # The header bar is deliberately darker than the page body in BOTH modes,
+    # so it reads as a distinct, higher-contrast band. bslib derives the navbar
+    # text colour from these via colour-contrast, so a dark bg yields light text.
+    navbar-light-bg: "#1f3850"
+    navbar-dark-bg: "#0a0f17"

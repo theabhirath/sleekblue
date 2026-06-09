@@ -1,0 +1,27 @@
+Package: sleekblue
+Title: Muted-Blue pkgdown Template with Light and Dark Modes
+Version: 0.1.0
+Authors@R:
+    person(
+        "Abhirath", "Anand",
+        email = "abhirath@umich.edu",
+        role = c("aut", "cre"),
+        comment = c(ORCID = "0009-0008-6985-9266")
+    )
+Description: A 'pkgdown' template package providing a sleek, muted-blue visual
+    theme for documentation websites, with first-class support for light and
+    dark colour modes (Bootstrap 5.3 colour modes via the pkgdown light
+    switch). Bundled fonts, a light/dark syntax-highlighting pair, and
+    component styling are shared across packages by setting
+    'template: {package: sleekblue}' in '_pkgdown.yml'.
+License: MIT + file LICENSE
+URL: https://theabhirath.github.io/sleekblue, https://github.com/theabhirath/sleekblue
+BugReports: https://github.com/theabhirath/sleekblue/issues
+Encoding: UTF-8
+Suggests:
+    bslib (>= 0.6.0),
+    knitr,
+    pkgdown (>= 2.1.0),
+    rmarkdown
+Config/Needs/website:
+    theabhirath/sleekblue

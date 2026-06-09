@@ -1,0 +1,93 @@
+---
+title: "Theme showcase"
+description: >
+  A kitchen-sink of common documentation elements so you can see how the
+  muted-blue theme styles headings, prose, code, tables, and figures — in both
+  light and dark mode.
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+    collapse = TRUE,
+    comment = "#>",
+    fig.align = "center",
+    fig.width = 7,
+    fig.height = 4,
+    dpi = 96
+)
+```
+
+Use the **light switch** in the top-right of the navbar to flip between light,
+dark, and auto modes. Every element on this page is styled for both.
+
+## Prose and inline elements
+
+This is a normal paragraph of body text set in **Inter**. It mixes *emphasis*,
+**strong emphasis**, a [link to pkgdown](https://pkgdown.r-lib.org), and a bit
+of `inline_code()` to show the muted-blue code chip. Headings are set in
+**Outfit** with slightly tightened letter-spacing for a sleeker feel.
+
+> Blockquotes get a muted-blue accent bar on the left, which reads cleanly
+> against both the light off-white and the dark navy backgrounds.
+
+### Lists
+
+- An unordered list item
+- Another item, with `inline code`
+    - A nested item
+    - One more nested item
+- A final top-level item
+
+1. First ordered step
+2. Second ordered step
+3. Third ordered step
+
+## Code blocks
+
+Fenced code blocks are framed with a rounded border that matches the rest of the
+page. The token colours come from the `arrow-light` / `nord` syntax themes,
+which track the active colour mode:
+
+```{r}
+# A short, plain example
+nums <- rnorm(100, mean = 5, sd = 2)
+summary(nums)
+```
+
+A non-evaluated block, to show pure syntax highlighting:
+
+```r
+fit <- lm(mpg ~ wt + cyl, data = mtcars)
+coef(summary(fit))
+```
+
+## Tables
+
+```{r}
+knitr::kable(head(mtcars[, 1:5]), caption = "The first few rows of `mtcars`.")
+```
+
+A plain Markdown table renders the same way:
+
+| Mode  | Background  | Primary   |
+|-------|-------------|-----------|
+| Light | `#fbfcfe`   | `#3f6f9f` |
+| Dark  | `#0f141b`   | `#7ea8d6` |
+
+## Figures
+
+```{r}
+op <- par(mar = c(4, 4, 1, 1))
+plot(mtcars$wt, mtcars$mpg,
+    pch = 19, col = "#3f6f9f",
+    xlab = "Weight (1000 lbs)", ylab = "Miles per gallon"
+)
+par(op)
+```
+
+## Buttons and emphasis
+
+<a href="#" class="btn btn-primary">Primary button</a>
+<a href="#" class="btn btn-outline-primary">Outline button</a>
+
+That covers the elements you'll meet most often in package documentation.

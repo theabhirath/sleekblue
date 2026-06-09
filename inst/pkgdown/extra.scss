@@ -1,0 +1,271 @@
+//------------------------------------------------------------------------------
+// sleekblue — muted-blue pkgdown theme (light + dark)
+//
+// This file is appended to the bslib ruleset. Code-token colours come from the
+// highlight themes set in _pkgdown.yml (arrow-light / nord); here we style the
+// layout and components, and define the dark colour mode by overriding the
+// Bootstrap 5.3 CSS custom properties under [data-bs-theme="dark"].
+//------------------------------------------------------------------------------
+
+// ---- Brand palette ----------------------------------------------------------
+$sb-blue-50: #f3f7fb;
+$sb-blue-100: #e7eef6;
+$sb-blue-200: #cbdaea;
+$sb-blue-300: #a6c0db;
+$sb-blue-400: #6f93bd;
+$sb-blue-500: #3f6f9f; // primary (light)
+$sb-blue-600: #345d86;
+$sb-blue-700: #294a6c;
+$sb-blue-800: #1f3850;
+$sb-blue-900: #16283a;
+
+// Dark colour-mode surfaces and text (cool, muted navy)
+$sb-dark-bg: #0f141b;
+$sb-dark-surface: #151c26;
+$sb-dark-surface-2: #1b2531;
+$sb-dark-border: #28323f;
+$sb-dark-fg: #c4cdd9;
+$sb-dark-fg-muted: #8a96a5;
+$sb-dark-fg-strong: #eef2f7;
+$sb-dark-primary: #7ea8d6;
+$sb-dark-primary-2: #a6c6e8;
+$sb-dark-code: #9db8d8;
+
+// =============================================================================
+// Global polish (both colour modes)
+// =============================================================================
+:root {
+    --bs-tertiary-bg: #{$sb-blue-50};
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+    letter-spacing: 0.005em;
+}
+
+// Smooth cross-fade when the light switch toggles the colour mode.
+body,
+.navbar,
+.table,
+pre,
+code,
+.btn,
+aside .nav-link {
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--bs-emphasis-color);
+}
+
+.page-header {
+    border-bottom: 1px solid var(--bs-border-color);
+    padding-bottom: 0.6rem;
+}
+
+// Content links: no underline at rest, subtle underline on hover.
+main a,
+.contents a {
+    text-underline-offset: 0.16em;
+    text-decoration-thickness: 1px;
+    transition: color 0.15s ease;
+}
+main a:hover,
+.contents a:hover {
+    text-decoration: underline;
+}
+
+blockquote {
+    border-left: 3px solid var(--bs-primary);
+    padding-left: 1rem;
+    color: var(--bs-secondary-color);
+}
+
+:focus-visible {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 2px;
+}
+
+::selection {
+    background-color: color-mix(in srgb, var(--bs-primary) 22%, transparent);
+}
+
+// =============================================================================
+// Navbar
+// =============================================================================
+.navbar {
+    border-bottom: 1px solid var(--bs-border-color);
+    backdrop-filter: saturate(180%) blur(6px);
+}
+
+.navbar .navbar-brand {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.navbar .nav-link {
+    border-radius: 0.4rem;
+    padding-inline: 0.6rem;
+    transition:
+        color 0.15s ease,
+        background-color 0.15s ease;
+}
+// The header bar is dark in both modes, so accents are light tints of white
+// rather than the mid-blue primary, which would be low-contrast here.
+.navbar .nav-link:hover {
+    background-color: color-mix(in srgb, white 12%, transparent);
+}
+.navbar .nav-link.active {
+    color: #cfe0f1 !important;
+    font-weight: 500;
+}
+
+// The version label ships with `.text-muted`, which is a dark grey in light
+// mode and so vanishes against the dark header. Override it with a light tint
+// (the header is dark in both modes) so the version stays legible.
+.navbar .nav-text {
+    color: rgba(251, 252, 254, 0.75) !important;
+}
+
+// =============================================================================
+// Sidebars / in-page tables of contents
+// =============================================================================
+aside .nav-link,
+#toc .nav-link {
+    color: var(--bs-secondary-color);
+    border-left: 2px solid transparent;
+    border-radius: 0;
+    padding-block: 0.15rem;
+}
+aside .nav-link:hover,
+#toc .nav-link:hover {
+    color: var(--bs-primary);
+}
+aside .nav-link.active,
+#toc .nav-link.active {
+    color: var(--bs-primary);
+    border-left-color: var(--bs-primary);
+    font-weight: 500;
+}
+
+// =============================================================================
+// Code
+// =============================================================================
+// Code blocks: keep the highlight theme's token + background colours, add a
+// tidy rounded frame that matches the page borders.
+pre,
+.sourceCode pre {
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    padding: 0.85rem 1rem;
+    font-size: 0.875em;
+}
+
+// Inline code: pill-shaped chip in both modes.
+:not(pre) > code {
+    border-radius: 0.3rem;
+    padding: 0.12em 0.38em;
+    font-size: 0.875em;
+}
+
+// =============================================================================
+// Tables
+// =============================================================================
+.table > thead {
+    border-bottom: 2px solid var(--bs-border-color);
+}
+.table > thead th {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 600;
+    color: var(--bs-emphasis-color);
+}
+
+// =============================================================================
+// Buttons and form focus
+// =============================================================================
+.btn-primary {
+    --bs-btn-bg: #{$sb-blue-500};
+    --bs-btn-border-color: #{$sb-blue-500};
+    --bs-btn-hover-bg: #{$sb-blue-600};
+    --bs-btn-hover-border-color: #{$sb-blue-600};
+    --bs-btn-active-bg: #{$sb-blue-700};
+    --bs-btn-active-border-color: #{$sb-blue-700};
+}
+
+.form-control:focus,
+.search-input:focus {
+    border-color: $sb-blue-400;
+    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--bs-primary) 25%, transparent);
+}
+
+// =============================================================================
+// Footer
+// =============================================================================
+footer {
+    border-top: 1px solid var(--bs-border-color);
+    color: var(--bs-secondary-color);
+    font-size: 0.9em;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+}
+
+// =============================================================================
+// Dark colour mode — muted navy, brighter blue accents
+// =============================================================================
+[data-bs-theme="dark"] {
+    --bs-body-bg: #{$sb-dark-bg};
+    --bs-body-color: #{$sb-dark-fg};
+    --bs-emphasis-color: #{$sb-dark-fg-strong};
+    --bs-emphasis-color-rgb: 238, 242, 247;
+    --bs-secondary-color: #{$sb-dark-fg-muted};
+    --bs-secondary-bg: #{$sb-dark-surface};
+    --bs-tertiary-bg: #{$sb-dark-surface-2};
+    --bs-border-color: #{$sb-dark-border};
+
+    --bs-primary: #{$sb-dark-primary};
+    --bs-primary-rgb: 126, 168, 214;
+    --bs-link-color: #{$sb-dark-primary};
+    --bs-link-color-rgb: 126, 168, 214;
+    --bs-link-hover-color: #{$sb-dark-primary-2};
+    --bs-link-hover-color-rgb: 166, 198, 232;
+
+    --bs-heading-color: #{$sb-dark-fg-strong};
+    --bs-code-color: #{$sb-dark-code};
+
+    color-scheme: dark;
+
+    .btn-primary {
+        --bs-btn-color: #{$sb-dark-bg};
+        --bs-btn-bg: #{$sb-dark-primary};
+        --bs-btn-border-color: #{$sb-dark-primary};
+        --bs-btn-hover-color: #{$sb-dark-bg};
+        --bs-btn-hover-bg: #{$sb-dark-primary-2};
+        --bs-btn-hover-border-color: #{$sb-dark-primary-2};
+    }
+
+    :not(pre) > code {
+        background-color: #{$sb-dark-surface-2};
+        color: #{$sb-dark-code};
+    }
+}

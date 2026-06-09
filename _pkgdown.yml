@@ -1,0 +1,26 @@
+# This is the theme package's OWN site config: it renders itself with itself,
+# so the docs are a live preview of the theme. Everything visual (Bootstrap
+# version, light switch, fonts, palette, syntax highlighting) is inherited from
+# inst/pkgdown/_pkgdown.yml via the self-reference below.
+
+url: https://theabhirath.github.io/sleekblue
+
+template:
+  package: sleekblue
+
+authors:
+  Abhirath Anand:
+    href: https://theabhirath.github.io
+
+navbar:
+  structure:
+    left: [examples]
+    right: [search, github, lightswitch]
+  components:
+    examples:
+      text: Examples
+      menu:
+        - text: Theme showcase
+          href: articles/showcase.html
+        - text: Colours & modes
+          href: articles/colours-and-modes.html
