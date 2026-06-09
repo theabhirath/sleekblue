@@ -1,0 +1,71 @@
+# sleekblue
+
+A [pkgdown](https://pkgdown.r-lib.org) **template package** that gives
+your documentation site a sleek, muted-blue look with first-class
+**light and dark colour modes**. It bundles a coordinated type scale, a
+light/dark syntax-highlighting pair, and component styling.
+
+## What you get
+
+- **Muted-blue palette** — a calm steel-blue (`#3f6f9f`) primary on a
+  faintly cool off-white in light mode, and a brighter airy blue
+  (`#7ea8d6`) on deep muted navy in dark mode.
+- **Light + dark modes** via pkgdown’s light switch (Bootstrap 5.3
+  colour modes). A toggle appears in the navbar; code highlighting swaps
+  between `arrow-light` and `nord` to match.
+- **Typography** — Inter for body text, Outfit for headings, JetBrains
+  Mono for code (bundled at build time, no CDN needed at view time).
+- **Polished components** — rounded, framed code blocks; accent-bar TOC
+  links; a subtle blurred navbar border; tidy tables, buttons, and focus
+  rings.
+
+## Usage
+
+In the consuming package’s `_pkgdown.yml`:
+
+``` yaml
+template:
+  package: sleekblue
+```
+
+For pkgdown to find the template when building the site (e.g. on CI),
+add it to the `DESCRIPTION`:
+
+    Config/Needs/website: theabhirath/sleekblue
+
+### Installation
+
+``` r
+
+# install.packages("pak")
+pak::pak("theabhirath/sleekblue")
+```
+
+## Customising
+
+- Colours, fonts, and Bootstrap variables live in
+  `inst/pkgdown/_pkgdown.yml` under `template.bslib`.
+- Layout and component styling — including the entire dark colour mode
+  under `[data-bs-theme="dark"]` — lives in `inst/pkgdown/extra.scss`.
+
+A consuming package can override any single value by setting it locally
+in its own `_pkgdown.yml`; local keys win over the template’s.
+
+# 
+
+# Articles
+
+### All vignettes
+
+- [Colours &
+  modes](https://theabhirath.github.io/sleekblue/articles/colours-and-modes.md):
+
+  The muted-blue palette and how the light and dark colour modes are
+  wired up.
+
+- [Theme
+  showcase](https://theabhirath.github.io/sleekblue/articles/showcase.md):
+
+  A kitchen-sink of common documentation elements so you can see how the
+  muted-blue theme styles headings, prose, code, tables, and figures —
+  in both light and dark mode.

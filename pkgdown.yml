@@ -1,0 +1,10 @@
+pandoc: 3.8.3
+pkgdown: 2.2.0
+pkgdown_sha: ~
+articles:
+  articles/colours-and-modes: colours-and-modes.html
+  articles/showcase: showcase.html
+last_built: 2026-06-09T18:31Z
+urls:
+  reference: https://theabhirath.github.io/sleekblue/reference
+  article: https://theabhirath.github.io/sleekblue/articles
